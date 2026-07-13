@@ -44,26 +44,17 @@ where
 - \(T\) = Time to maturity
 - \(N(\cdot)\) = Standard normal cumulative distribution function
 
-### Call Option Delta
+## Call Option Delta
 
 $$
-\boxed{
-\Delta_{call}
-=
-e^{-qT}N(d_1)
-}
+\Delta_{call}=e^{-qT}N(d_1)
 $$
 
-### Put Option Delta
+## Put Option Delta
 
 $$
-\boxed{
-\Delta_{put}
-=
-e^{-qT}\left(N(d_1)-1\right)
-}
+\Delta_{put}=e^{-qT}\left(N(d_1)-1\right)
 $$
-
 ---
 
 ## Characteristics
@@ -126,5 +117,6 @@ $$
 ## Call Option Delta
 
 <p align="center">
-<img src="images/call_delta.png" width="650">
+<img src="<img width="575" height="608" alt="image" src="https://github.com/user-attachments/assets/f5f5bbed-9cc8-40c4-922f-f4211429a2fe" />
+" width="650">
 </p>
