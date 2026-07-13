@@ -4,36 +4,62 @@
 
 Theta measures the sensitivity of an option's price with respect to the passage of time.
 
-It represents the time decay of an option:
-
 $$
 \Theta=\frac{\partial V}{\partial t}
 $$
 
-where:
+Theta represents the **time decay** of an option.
 
-- Theta measures how much the option value changes as time passes.
-- It is also called the **time decay** of an option.
+It measures how much the option price changes when time moves forward while other variables remain constant.
 
-For long option positions, Theta is usually negative because options lose value as expiration approaches.
+For long option positions:
+
+$$
+\Theta < 0
+$$
+
+because options lose time value as expiration approaches.
 
 ---
 
 # 2. Black-Scholes Theta Formula
 
-## 2.1 Call Option Theta
+For European options, Theta differs between Call and Put options.
 
-For a European Call option:
+---
+
+## 2.1 European Call Option Theta
+
 
 $$
 \Theta_{Call}
 =
--\frac{S\phi(d_1)\sigma}{2\sqrt{T-t}}
--rKe^{-r(T-t)}N(d_2)
+-\frac{S e^{-q(T-t)}\phi(d_1)\sigma}
+{2\sqrt{T-t}}
+-qS e^{-q(T-t)}N(d_1)
+-rK e^{-r(T-t)}N(d_2)
 $$
 
 
-where:
+---
+
+## 2.2 European Put Option Theta
+
+
+$$
+\Theta_{Put}
+=
+-\frac{S e^{-q(T-t)}\phi(d_1)\sigma}
+{2\sqrt{T-t}}
++qS e^{-q(T-t)}N(-d_1)
++rK e^{-r(T-t)}N(-d_2)
+$$
+
+
+---
+
+## 2.3 Definitions of $d_1$ and $d_2$
+
 
 $$
 d_1=
@@ -44,26 +70,23 @@ d_1=
 $$
 
 
-and:
-
 $$
 d_2=d_1-\sigma\sqrt{T-t}
 $$
 
 
----
+where:
 
-## 2.2 Put Option Theta
-
-For a European Put option:
 
 $$
-\Theta_{Put}
+\phi(d_1)
 =
--\frac{S\phi(d_1)\sigma}{2\sqrt{T-t}}
-+rKe^{-r(T-t)}N(-d_2)
+\frac{1}{\sqrt{2\pi}}
+e^{-\frac{d_1^2}{2}}
 $$
 
+
+is the standard normal probability density function.
 
 ---
 
@@ -79,16 +102,18 @@ $$
 | $q$ | Dividend yield |
 | $\sigma$ | Implied volatility |
 | $N(d)$ | Standard normal cumulative distribution function |
-| $\phi(d)$ | Standard normal probability density function |
+| $\phi(d)$ | Standard normal density function |
 
 ---
 
 # 4. Main Properties of Theta
 
 
-## 4.1 Theta is Usually Negative for Long Options
+## 4.1 Long Options Usually Have Negative Theta
+
 
 For long Call and Put positions:
+
 
 $$
 \Theta < 0
@@ -98,23 +123,24 @@ $$
 Meaning:
 
 - The option loses value as time passes.
-- The loss accelerates near expiration.
+- Time decay accelerates near expiration.
 
 
 Example:
 
-If:
 
 $$
 \Theta=-0.05
 $$
 
 
-The option value decreases approximately:
+means the option value decreases approximately:
+
 
 $$
 0.05
 $$
+
 
 per day.
 
@@ -125,38 +151,36 @@ per day.
 
 Theta is not linear.
 
-The relationship between option value and time:
+Option value decays faster as expiration approaches:
 
-
-
-
-
-
-
-As expiration approaches:
 
 $$
 T-t\rightarrow0
 $$
 
 
-Theta becomes larger in magnitude:
+Therefore:
+
 
 $$
 |\Theta|\uparrow
 $$
 
 
-This effect is called:
+especially for short-term options.
 
-**Time Decay Acceleration**
+
+The time decay effect is called:
+
+**Theta Decay**
 
 ---
 
-# 6. Theta is Largest for ATM Options
+# 6. Theta is Largest Around ATM Options
 
 
-Theta reaches its maximum magnitude around:
+Theta magnitude is usually highest when:
+
 
 $$
 S\approx K
@@ -165,50 +189,57 @@ $$
 
 Therefore:
 
+
 $$
-ATM\ options\ have\ the\ highest\ time\ decay
+ATM\ options\ usually\ have\ the\ largest\ time\ decay
 $$
 
 
-Reason:
+because ATM options contain the largest amount of:
 
-ATM options have the highest:
-
-- Gamma
-- Vega
 - Extrinsic value
-
+- Gamma exposure
+- Vega exposure
 
 ---
 
 # 7. Relationship Between Theta and Gamma
 
 
-Theta and Gamma have a close relationship.
+The Black-Scholes partial differential equation:
 
-The Black-Scholes equation gives:
 
 $$
 \Theta
 +
 \frac12\sigma^2S^2\Gamma
-+rS\Delta-rV=0
++rS\Delta
+-rV
+=0
 $$
 
 
 Therefore:
+
 
 $$
 \boxed{
 \Theta
 =
 -\frac12\sigma^2S^2\Gamma
--rS\Delta+rV
+-rS\Delta
++rV
 }
 $$
 
 
-A high Gamma position usually has a more negative Theta.
+This shows the trade-off between:
+
+- Gamma
+- Theta
+
+
+A long Gamma position usually requires paying Theta.
 
 This relationship is called:
 
@@ -219,7 +250,8 @@ This relationship is called:
 # 8. Long Theta vs Short Theta
 
 
-## Long Options
+## Long Option Position
+
 
 Examples:
 
@@ -229,21 +261,26 @@ Examples:
 
 Characteristics:
 
+
 $$
 \Theta<0
 $$
 
 
-They:
+Benefits:
 
-- Lose money from time decay.
-- Benefit from large volatility changes.
-- Have positive Gamma.
+- Large price movements
+- Increase in volatility
+
+
+Costs:
+
+- Time decay
 
 
 ---
 
-## Short Options
+## Short Option Position
 
 
 Examples:
@@ -254,40 +291,50 @@ Examples:
 
 Characteristics:
 
+
 $$
 \Theta>0
 $$
 
 
-They:
+Benefits:
 
-- Earn time decay.
-- Prefer stable markets.
-- Have negative Gamma.
+- Time decay
+- Stable markets
 
+
+Risks:
+
+- Large price movements
+- Volatility increase
 
 ---
 
 # 9. Theta and Volatility
 
 
-Theta is affected by implied volatility:
+Higher implied volatility:
 
-Higher volatility:
 
 $$
 \sigma\uparrow
 $$
 
 
-usually increases:
-
-- Option premium
-- Time decay
+usually increases option premium.
 
 
-because more uncertainty increases the value of waiting.
+However, higher volatility also increases the cost of holding long option positions because:
 
+
+$$
+|\Theta|\uparrow
+$$
+
+
+Therefore:
+
+Long Vega positions usually pay more Theta.
 
 ---
 
@@ -301,9 +348,9 @@ because more uncertainty increases the value of waiting.
 | Long Call | Negative Theta |
 | Long Put | Negative Theta |
 | Short Option | Positive Theta |
-| Largest | ATM options |
+| Maximum | Usually ATM |
 | Near Expiration | Faster decay |
-| High Gamma | More negative Theta |
-| Market Maker | Usually earns Theta |
+| Long Gamma | Usually pays Theta |
+| Short Gamma | Usually earns Theta |
 | Risk Trade-off | Gamma vs Theta |
 
