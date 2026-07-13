@@ -1,4 +1,8 @@
-Gamma is the rate of change of the delta of the portfolio with respect to the spot price S of the uderlying assest, the second derivative of the value of the protfolio with resepect to S:
+# Option Gamma (Γ)
+
+## 1. Definition
+
+Gamma measures the sensitivity of an option's Delta with respect to the underlying asset price.
 
 \[
 \Gamma = \frac{\partial \Delta}{\partial S}
@@ -9,6 +13,65 @@ where:
 
 - Delta is the first-order sensitivity of option price to the underlying asset.
 - Gamma is the second-order sensitivity and measures the curvature of the option price.
+
+---
+
+# 2. Black-Scholes Gamma Formula
+
+For both European Call and Put options, Gamma is identical:
+
+\[
+\boxed{
+\Gamma=
+\frac{\phi(d_1)}
+{S\sigma\sqrt{T-t}}
+}
+\]
+
+where:
+
+\[
+d_1=
+\frac{
+\ln(S/K)+(r-q+\frac12\sigma^2)(T-t)
+}
+{\sigma\sqrt{T-t}}
+\]
+
+The standard normal probability density function is:
+
+\[
+\phi(d_1)
+=
+\frac{1}{\sqrt{2\pi}}
+e^{-\frac{d_1^2}{2}}
+\]
+
+Therefore:
+
+\[
+\boxed{
+\Gamma=
+\frac{
+\frac{1}{\sqrt{2\pi}}
+e^{-d_1^2/2}
+}
+{S\sigma\sqrt{T-t}}
+}
+\]
+
+
+## Parameters
+
+| Symbol | Description |
+|---|---|
+| \(S\) | Current underlying asset price |
+| \(K\) | Strike price |
+| \(T-t\) | Time to maturity |
+| \(r\) | Risk-free interest rate |
+| \(q\) | Dividend yield |
+| \(\sigma\) | Implied volatility |
+| \(\phi(d_1)\) | Standard normal density function |
 
 ---
 
@@ -253,3 +316,47 @@ Delta hedging removes first-order risk:
 \[
 \Delta=0
 \]
+
+
+However, after the underlying price changes:
+
+\[
+\Delta_{new}\neq0
+\]
+
+
+because:
+
+\[
+\Gamma=\frac{\partial\Delta}{\partial S}
+\]
+
+
+Therefore, traders may construct a Gamma-neutral portfolio:
+
+\[
+\boxed{
+\Gamma_1+\Gamma_2=0
+}
+\]
+
+
+---
+
+# 10. Practical Summary
+
+
+| Feature | Gamma Property |
+|---|---|
+| Definition | Change in Delta |
+| Formula | \(\frac{\phi(d_1)}{S\sigma\sqrt{T-t}}\) |
+| Call Gamma | Positive |
+| Put Gamma | Positive |
+| Maximum | ATM |
+| Effect of Time | Increases near expiration |
+| Long Option | Long Gamma |
+| Short Option | Short Gamma |
+| Large Volatility | Benefits Long Gamma |
+| Market Maker | Usually Short Gamma |
+| Hedging | Requires Gamma management |
+
