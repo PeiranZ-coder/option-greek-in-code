@@ -1,3 +1,4 @@
+<img width="575" height="608" alt="Screenshot 2026-07-13 065252" src="https://github.com/user-attachments/assets/e5abf251-0004-4a68-aa3d-788bf5938834" />
 Def :
  let V be the value of portfolio of derivative securities on one underlying assest. The rate of change of the value of the portfolio  with respect to various parameters. They change are called
 "the greek" of the portfolio, and are denoted by symobols for greek aplhabaet.
@@ -113,10 +114,5 @@ $$
 \Delta\approx-1
 $$
 
+<img width="575" height="608" alt="Screenshot 2026-07-13 065252" src="https://github.com/user-attachments/assets/8050f896-99c9-45f4-98e2-3e4f3a8671e1" />
 
-## Call Option Delta
-
-<p align="center">
-<img src="<img width="575" height="608" alt="image" src="https://github.com/user-attachments/assets/f5f5bbed-9cc8-40c4-922f-f4211429a2fe" />
-" width="650">
-</p>
