@@ -121,3 +121,10 @@ $$
 $$
 \Delta\approx-1
 $$
+
+
+## Call Option Delta
+
+<p align="center">
+<img src="images/call_delta.png" width="650">
+</p>
