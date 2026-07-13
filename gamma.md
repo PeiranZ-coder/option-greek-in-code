@@ -4,10 +4,10 @@
 
 Gamma measures the sensitivity of an option's Delta with respect to the underlying asset price.
 
-\[
+$$
 \Gamma = \frac{\partial \Delta}{\partial S}
 = \frac{\partial^2 V}{\partial S^2}
-\]
+$$
 
 where:
 
@@ -20,82 +20,81 @@ where:
 
 For both European Call and Put options, Gamma is identical:
 
-\[
-\boxed{
-\Gamma=
+$$
+\Gamma =
 \frac{\phi(d_1)}
 {S\sigma\sqrt{T-t}}
-}
-\]
+$$
+
 
 where:
 
-\[
+$$
 d_1=
 \frac{
-\ln(S/K)+(r-q+\frac12\sigma^2)(T-t)
+\ln(S/K)+(r-q+\frac{1}{2}\sigma^2)(T-t)
 }
 {\sigma\sqrt{T-t}}
-\]
+$$
 
-The standard normal probability density function is:
 
-\[
+The standard normal probability density function:
+
+$$
 \phi(d_1)
 =
 \frac{1}{\sqrt{2\pi}}
 e^{-\frac{d_1^2}{2}}
-\]
+$$
+
 
 Therefore:
 
-\[
-\boxed{
-\Gamma=
+$$
+\Gamma =
 \frac{
 \frac{1}{\sqrt{2\pi}}
-e^{-d_1^2/2}
+e^{-\frac{d_1^2}{2}}
 }
 {S\sigma\sqrt{T-t}}
-}
-\]
+$$
 
 
 ## Parameters
 
 | Symbol | Description |
 |---|---|
-| \(S\) | Current underlying asset price |
-| \(K\) | Strike price |
-| \(T-t\) | Time to maturity |
-| \(r\) | Risk-free interest rate |
-| \(q\) | Dividend yield |
-| \(\sigma\) | Implied volatility |
-| \(\phi(d_1)\) | Standard normal density function |
+| $S$ | Current underlying asset price |
+| $K$ | Strike price |
+| $T-t$ | Time to maturity |
+| $r$ | Risk-free interest rate |
+| $q$ | Dividend yield |
+| $\sigma$ | Implied volatility |
+| $\phi(d_1)$ | Standard normal density function |
 
 ---
 
 # 3. Main Properties of Gamma
 
-
 ## 3.1 Gamma is Always Positive
 
 For European options:
 
-\[
+$$
 \Gamma_{Call}>0
-\]
+$$
 
-\[
+$$
 \Gamma_{Put}>0
-\]
+$$
 
 
 Gamma represents the convexity of option value:
 
-\[
-\Gamma=\frac{\partial^2V}{\partial S^2}>0
-\]
+$$
+\Gamma=
+\frac{\partial^2 V}{\partial S^2}>0
+$$
 
 
 Therefore:
@@ -113,75 +112,65 @@ Therefore:
 
 Gamma reaches its maximum when:
 
-\[
+$$
 S\approx K
-\]
+$$
 
 
 Therefore:
 
-\[
-\boxed{
+$$
 ATM\ options\ have\ the\ largest\ Gamma
-}
-\]
+$$
 
 
 Reason:
 
-At-the-money options have:
+For ATM options:
 
-\[
+$$
 d_1\approx0
-\]
+$$
 
 
 and:
 
-\[
+$$
 \phi(0)=\frac{1}{\sqrt{2\pi}}
-\]
+$$
 
-which is the maximum value of the normal density function.
 
 ---
 
 # 5. Gamma and Time to Maturity
 
-Gamma is inversely related to time:
+Gamma approximately increases as maturity decreases:
 
-\[
-\Gamma
-\propto
-\frac{1}{\sqrt{T-t}}
-\]
+$$
+\Gamma \propto \frac{1}{\sqrt{T-t}}
+$$
 
 
 As expiration approaches:
 
-\[
-T-t\rightarrow0
-\]
+$$
+T-t \rightarrow 0
+$$
 
 
 Gamma increases:
 
-\[
-\Gamma\uparrow
-\]
+$$
+\Gamma \uparrow
+$$
 
 
-Especially for ATM options:
+Especially for short-term ATM options:
 
-\[
-\Gamma\rightarrow\infty
-\]
+$$
+\Gamma \rightarrow \infty
+$$
 
-
-Short-term ATM options have:
-
-- Large Delta changes
-- High Gamma exposure
 
 ---
 
@@ -190,17 +179,16 @@ Short-term ATM options have:
 
 Delta:
 
-\[
+$$
 \Delta=N(d_1)
-\]
+$$
 
 
 Gamma:
 
-\[
-\Gamma=
-\frac{\partial N(d_1)}{\partial S}
-\]
+$$
+\Gamma=\frac{\partial \Delta}{\partial S}
+$$
 
 
 Therefore:
@@ -208,47 +196,36 @@ Therefore:
 - Delta measures the slope of the option price curve.
 - Gamma measures the change of the slope.
 
-Mathematically:
-
-\[
-\Gamma=\frac{d\Delta}{dS}
-\]
-
-
 ---
 
 # 7. Gamma P&L Approximation
 
 Using Taylor expansion:
 
-\[
+$$
 dV
 \approx
 \Delta dS
 +
-\frac12\Gamma(dS)^2
-\]
+\frac{1}{2}\Gamma(dS)^2
+$$
 
 
-The two components:
+Delta contribution:
 
-### Delta Component
-
-\[
+$$
 \Delta dS
-\]
-
-Represents directional exposure.
+$$
 
 
-### Gamma Component
+Gamma contribution:
 
-\[
-\frac12\Gamma(dS)^2
-\]
+$$
+\frac{1}{2}\Gamma(dS)^2
+$$
 
-Represents convexity benefit.
 
+The Gamma term represents the convexity effect.
 
 ---
 
@@ -257,24 +234,16 @@ Represents convexity benefit.
 
 ## Long Gamma
 
-\[
+$$
 \Gamma>0
-\]
-
-
-A long gamma position benefits from large movements:
-
-\[
-(dS)^2\uparrow
-\]
+$$
 
 
 Characteristics:
 
-- Likes volatility
-- Benefits from large price moves
-- Requires continuous delta hedging
-
+- Benefits from large price movements.
+- Benefits from increased volatility.
+- Requires continuous Delta hedging.
 
 Examples:
 
@@ -286,25 +255,21 @@ Examples:
 
 ## Short Gamma
 
-\[
+$$
 \Gamma<0
-\]
-
-
-A short gamma position benefits from stable markets.
+$$
 
 
 Characteristics:
 
-- Prefers low volatility
-- Loses money during large moves
-- Requires active risk management
-
+- Prefers stable markets.
+- Loses money during large price movements.
+- Requires active risk management.
 
 Examples:
 
-- Market makers selling options
-
+- Option sellers
+- Market makers
 
 ---
 
@@ -313,32 +278,30 @@ Examples:
 
 Delta hedging removes first-order risk:
 
-\[
+$$
 \Delta=0
-\]
+$$
 
 
-However, after the underlying price changes:
+However:
 
-\[
+$$
 \Delta_{new}\neq0
-\]
+$$
 
 
 because:
 
-\[
+$$
 \Gamma=\frac{\partial\Delta}{\partial S}
-\]
+$$
 
 
-Therefore, traders may construct a Gamma-neutral portfolio:
+Gamma-neutral portfolio:
 
-\[
-\boxed{
+$$
 \Gamma_1+\Gamma_2=0
-}
-\]
+$$
 
 
 ---
@@ -349,7 +312,7 @@ Therefore, traders may construct a Gamma-neutral portfolio:
 | Feature | Gamma Property |
 |---|---|
 | Definition | Change in Delta |
-| Formula | \(\frac{\phi(d_1)}{S\sigma\sqrt{T-t}}\) |
+| Formula | $\frac{\phi(d_1)}{S\sigma\sqrt{T-t}}$ |
 | Call Gamma | Positive |
 | Put Gamma | Positive |
 | Maximum | ATM |
