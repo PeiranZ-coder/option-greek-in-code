@@ -114,5 +114,6 @@ $$
 \Delta\approx-1
 $$
 
+<p align="center">
 <img width="575" height="608" alt="Screenshot 2026-07-13 065252" src="https://github.com/user-attachments/assets/8050f896-99c9-45f4-98e2-3e4f3a8671e1" />
-
+</p>
