@@ -1,4 +1,3 @@
-<img width="575" height="608" alt="Screenshot 2026-07-13 065252" src="https://github.com/user-attachments/assets/e5abf251-0004-4a68-aa3d-788bf5938834" />
 Def :
  let V be the value of portfolio of derivative securities on one underlying assest. The rate of change of the value of the portfolio  with respect to various parameters. They change are called
 "the greek" of the portfolio, and are denoted by symobols for greek aplhabaet.
